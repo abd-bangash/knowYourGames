@@ -1,25 +1,5 @@
-import React, { useState, useEffect } from "react";
-import apiClient from "../../services/api-client";
+import useData from "./useData.js";
 
-const useGames = () => {
-  const [games, setGames] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    apiClient
-      .get("/games")
-      .then((res) => {
-        setGames(res.data.results);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
-  return { games, error, loading };
-};
+const useGames = () => useData("/games");
 
 export default useGames;
