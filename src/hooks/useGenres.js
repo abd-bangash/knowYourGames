@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import apiClient from "../../services/api-client";
 
-const useGames = () => {
-  const [games, setGames] = useState([]);
+const useGenres = () => {
+  const [genres, setGenres] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     apiClient
-      .get("/games")
+      .get("/genres")
       .then((res) => {
-        setGames(res.data.results);
+        setGenres(res.data.results);
         setLoading(false);
       })
       .catch((err) => {
@@ -19,7 +19,7 @@ const useGames = () => {
         setLoading(false);
       });
   }, []);
-  return { games, error, loading };
+  return { genres, error, loading };
 };
 
-export default useGames;
+export default useGenres;
