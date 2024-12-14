@@ -5,7 +5,7 @@ import { CriticScore } from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 export const GameCard = ({ game }) => {
   return (
-    <Card width={"300px"} borderRadius={"10px"} overflow={"hidden"}>
+    <Card>
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize={"2xl"}>{game.name}</Heading>
